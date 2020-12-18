@@ -30,7 +30,7 @@ export default function Budget() {
 
             if(budget&&budgetName)
             {
-          const checkRecord = await Axios.get("http://localhost:5500/budgets/findBudget",{params:{
+          const checkRecord = await Axios.get(SERVER_URL+"/budgets/findBudget",{params:{
             'budgetName':budgetName
           },
             headers: {
@@ -42,7 +42,7 @@ export default function Budget() {
         console.log(checkRecord.data[0]._id)
 
           
-          const response = await Axios.put("http://localhost:5500/budgets/update/",newBudget,{params:{
+          const response = await Axios.put(SERVER_URL+"/budgets/update/",newBudget,{params:{
             '_id':checkRecord.data[0]._id
           },
             headers: {

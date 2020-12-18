@@ -4,6 +4,8 @@ import UserContext from "../../context/UserContext";
 import Axios from "axios";
 import ErrorNotice from "../misc/ErrorNotice";
 
+const SERVER_URL = require('../../config/config').SERVER_URL;
+
 export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -17,7 +19,7 @@ export default function Login() {
     try {
       const loginUser = { email, password };
       const loginRes = await Axios.post(
-        "http://localhost:5500/users/login",
+        SERVER_URL+"/users/login",
         loginUser
       );
       setUserData({

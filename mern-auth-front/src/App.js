@@ -14,6 +14,9 @@ import Expenses from './components/misc/Expenses';
 //import updateBudgets from './components/misc/UpdateBudgets';
 //import updateExpenses from './components/misc/UpdateExpenses';
 
+
+const SERVER_URL = require('./config/config').SERVER_URL;
+
 export default function App() {
   const [userData, setUserData] = useState({
     token: undefined,
@@ -28,12 +31,12 @@ export default function App() {
         token = "";
       }
       const tokenRes = await Axios.post(
-        "http://localhost:5500/users/tokenIsValid",
+        SERVER_URL+"/users/tokenIsValid",
         null,
         { headers: { "x-auth-token": token } }
       );
       if (tokenRes.data) {
-        const userRes = await Axios.get("http://localhost:5500/users/", {
+        const userRes = await Axios.get(SERVER_URL+"/users/", {
           headers: { "x-auth-token": token },
         });
         setUserData({

@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(cors());
 
 const PORT = process.env.PORT || 5500;
+app.use(express.static('./client/build'));
 
 app.listen(PORT, () => console.log(`The server has started on port: ${PORT}`));
 

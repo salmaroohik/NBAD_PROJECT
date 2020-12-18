@@ -5,6 +5,8 @@ import Functions from "../layout/Functions"
 import ErrorNotice from "./ErrorNotice";
 import Axios from 'axios';
 
+const SERVER_URL = require('../../config/config').SERVER_URL;
+
 
 
 export default function Budget() {
@@ -27,7 +29,7 @@ export default function Budget() {
           console.log(token);
           console.log(newBudget);
           
-          const response = await Axios.post("http://localhost:5500/budgets",newBudget,{
+          const response = await Axios.post(SERVER_URL+"/budgets",newBudget,{
             headers: {
               'x-auth-token': `${token}`
             }

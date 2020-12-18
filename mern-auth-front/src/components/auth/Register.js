@@ -4,6 +4,8 @@ import UserContext from "../../context/UserContext";
 import Axios from "axios";
 import ErrorNotice from "../misc/ErrorNotice";
 
+const SERVER_URL = require('../../config/config').SERVER_URL;
+
 export default function Register() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -19,8 +21,8 @@ export default function Register() {
 
     try {
       const newUser = { email, password, passwordCheck, displayName };
-      await Axios.post("http://localhost:5500/users/register", newUser);
-      const loginRes = await Axios.post("http://localhost:5500/users/login", {
+      await Axios.post(SERVER_URL+"/users/register", newUser);
+      const loginRes = await Axios.post(SERVER_URL+"/users/login", {
         email,
         password,
       });

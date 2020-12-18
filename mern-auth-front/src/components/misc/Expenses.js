@@ -5,6 +5,9 @@ import Functions from "../layout/Functions"
 import ErrorNotice from "./ErrorNotice";
 import Axios from 'axios';
 
+
+const SERVER_URL = require('../../config/config').SERVER_URL;
+
 export default function Expense() {
     const [expenseName,setTitle] = useState();
     
@@ -22,7 +25,7 @@ export default function Expense() {
           const token=localStorage.getItem("auth-token");
           const newExpense={expense,expenseName};
           
-          const response = await Axios.post("http://localhost:5500/expenses",newExpense,{
+          const response = await Axios.post(SERVER_URL+"/expenses",newExpense,{
             headers: {
               'x-auth-token': `${token}`
             }
